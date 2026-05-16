@@ -1,7 +1,7 @@
 const estimateTime = (position) => {
-  const avgTimePerPerson = 5;
+  const avgMinutesPerUser = 10;
 
-  return position * avgTimePerPerson;
+  return position * avgMinutesPerUser;
 };
 
 module.exports = estimateTime;

@@ -2,8 +2,23 @@ const Queue = require("../models/Queue");
 
 exports.createQueue = async (req, res) => {
   try {
+    const {
+      name,
+      serviceProvider,
+      startTime,
+      endTime,
+      reservedLimit,
+      waitingLimit,
+    } = req.body;
+
     const queue = await Queue.create({
-      name: req.body.name,
+      name,
+      serviceProvider,
+      startTime,
+      endTime,
+      reservedLimit,
+      waitingLimit,
+      status: "open",
     });
 
     res.status(201).json(queue);

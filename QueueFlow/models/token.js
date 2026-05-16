@@ -14,15 +14,49 @@ const tokenSchema = new mongoose.Schema(
       required: true,
     },
 
+    queueType: {
+      type: String,
+      enum: ["reserved", "waiting"],
+      required: true,
+    },
+
     tokenNumber: {
       type: Number,
       required: true,
     },
 
+    tokenLabel: {
+      type: String,
+    },
+
     status: {
       type: String,
-      enum: ["waiting", "called", "completed", "skipped", "cancelled"],
-      default: "waiting",
+      enum: [
+        "reserved",
+        "waiting",
+        "pending-confirmation",
+        "called",
+        "completed",
+        "cancelled",
+        "rejected",
+        "expired",
+        "no-show",
+      ],
+      default: "reserved",
+    },
+    
+    addedByAdmin: {
+      type: Boolean,
+      default: false,
+    },
+
+    confirmationRequired: {
+      type: Boolean,
+      default: false,
+    },
+
+    estimatedArrivalTime: {
+      type: String,
     },
   },
   {
