@@ -1,7 +1,8 @@
-const estimateTime = (position) => {
-  const avgMinutesPerUser = 10;
+const AVG_MINUTES_PER_CUSTOMER = 10;
 
-  return position * avgMinutesPerUser;
-};
+/** Estimated wait from position in line (0 = next to serve among reserved) */
+function estimateWaitMinutes(position) {
+  return Math.max(0, position) * AVG_MINUTES_PER_CUSTOMER;
+}
 
-module.exports = estimateTime;
+module.exports = estimateWaitMinutes;
